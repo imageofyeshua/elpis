@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :microposts
   resources :users
 
-  root "users#index"
+  root "static_pages#home"
 
   get "up" => "rails/health#show", as: :rails_health_check
 
