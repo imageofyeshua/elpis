@@ -16,8 +16,8 @@
 }
 
 @media(max-width: 576px) {
-#hero {
-  background-image: url("mobile/image-hero.jpg");
-  background-size: center;
-}
+  #hero {
+    background-image: url("mobile/image-hero.jpg");
+    background-size: center;
+  }
 }
