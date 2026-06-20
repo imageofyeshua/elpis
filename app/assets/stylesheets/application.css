@@ -8,3 +8,16 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+#hero {
+  background-image: url("desktop/image-hero.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media(max-width: 576px) {
+#hero {
+  background-image: url("mobile/image-hero.jpg");
+  background-size: center;
+}
+}
