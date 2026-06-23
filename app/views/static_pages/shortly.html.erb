@@ -10,13 +10,14 @@
       <!-- Left Menu -->
       <div class="hidden space-x-8 font-bold lg:flex">
         <%= link_to "Features", "/", class: "text-grayish-violet hover:text-very-dark-violet" %>
-      </div>
-      <div class="hidden space-x-8 font-bold lg:flex">
         <%= link_to "Pricing", "/", class: "text-grayish-violet hover:text-very-dark-violet" %>
+        <%= link_to "Resources", "/", class: "text-grayish-violet hover:text-very-dark-violet" %>
       </div>
-      <div class="hidden space-x-8 font-bold lg:flex">
-        <%= link_to "Support", "/", class: "text-grayish-violet hover:text-very-dark-violet" %>
-      </div>
+    </div>
+    <!-- Right Buttons Menu -->
+    <div class="hidden items-center space-x-6 font-bold text-grayish-violet lg:flex">
+      <div class="hover:text-very-dark-violet">Login</div> 
+      <%= link_to "Sign Up", "/", class: "px-8 py-3 font-bold text-white bg-cyan rounded-full hover:opacity-70" %>
     </div>
   </div>
 </nav>
