@@ -10,13 +10,13 @@
   --font-josefin: "Josefin Sans", sans-serif;
   --font-poppins: "Poppins", sans-serif;
 
-  --color-cyan: 180 66% 49%;
-  --color-cyan-light: 180 66% 69%;
-  --color-dark-violet: 257 27% 26%;
-  --color-red: 0 87% 67%;
-  --color-grayish-violet: 257 7% 63%;
-  --color-very-dark-blue: 255 11% 22%;
-  --color-very-dark-violet: 260 8% 14%;
+  --color-cyan: hsl(180 66% 49%);
+  --color-cyan-light: hsl(180 66% 69%);
+  --color-dark-violet: hsl(257 27% 26%);
+  --color-red: hsl(0 87% 67%);
+  --color-grayish-violet: hsl(257 7% 63%);
+  --color-very-dark-blue: hsl(255 11% 22%);
+  --color-very-dark-violet: hsl(260 8% 14%);
 
   --spacing-180: 32rem;
 }
