@@ -2,6 +2,12 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  # Silence the routing error for Chrome DevTools config
+  config.after_initialize do |app|
+    app.routes.append do
+      get '/.well-known/appspecific/com.chrome.devtools.json', to: ->(env) { [404, {}, ['']] }
+    end
+  end
 
   # Make code changes take effect immediately without server restart.
   config.enable_reloading = true
