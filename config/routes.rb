@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   get "home", to: "static_pages#home"
-  get "about", to: "static_pages#about"
-  get "help", to: "static_pages#help"
+  get "loopstudios", to: "static_pages#loopstudios"
+  get "shortly", to: "static_pages#shortly"
 
-  root "static_pages#home"
+  root "static_pages#shortly"
 
   get "up" => "rails/health#show", as: :rails_health_check
 end

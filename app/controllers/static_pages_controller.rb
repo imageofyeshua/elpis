@@ -2,9 +2,9 @@ class StaticPagesController < ApplicationController
   def home
   end
 
-  def help
+  def shortly
   end
 
-  def about
+  def loopstudios
   end
 end
