@@ -43,4 +43,18 @@
     </div>
   </div>
 </section>
+<!-- Shorten Section -->
+<section id="shorten" class="relative bg-gray-100">
+  <!-- Shorten Container -->
+  <div class="max-w-4xl mx-auto p-6 space-y-6">
+    <!-- Form -->
+    <%= form_with url: "/", method: :post, local: true do |form| %>
+      <div id="link-form" class="relative flex flex-col w-full p-10 -mt-20 space-y-4 bg-dark-violet rounded-lg md:flex-row md:space-y-0 md:space-x-3">
+        <%= form.text_field :query, id: "link-input", placeholder: "Shorten a link here", class: "flex-1 p-3 border-2 bg-white rounded-lg placeholder-yellow-500 focus:outline-none" %>
+        <%= form.submit "ShortenIt!", class: "px-10 py-3 text-white bg-cyan rounded-lg hover:bg-cyan-light focus:outline-none md:py-2" %>
+      </div>
+    <% end %>
+  </div>
+</section>
+
 
