@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
   end
 
   def shortly
+    @user = User.new
   end
 
   def loopstudios
