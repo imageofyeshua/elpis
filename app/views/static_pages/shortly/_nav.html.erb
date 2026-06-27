@@ -1,0 +1,21 @@
+<nav class="relative container mx-auto p-6">
+  <!-- Flex Container For All Items -->
+  <div class="flex items-center justify-between">
+    <!-- Flex Container For Logo/Menu -->
+    <div class="flex items-center space-x-8">
+      <!-- Logo -->
+      <%= image_tag "logo_shortly.svg" %>
+      <!-- Left Menu -->
+      <div class="hidden space-x-5 font-bold lg:flex">
+        <%= link_to "Features", "/", class: "text-grayish-violet hover:text-very-dark-violet" %>
+        <%= link_to "Pricing", "/", class: "text-grayish-violet hover:text-very-dark-violet" %>
+        <%= link_to "Resources", "/", class: "text-grayish-violet hover:text-very-dark-violet" %>
+      </div>
+    </div>
+    <!-- Right Buttons Menu -->
+    <div class="hidden items-center space-x-5 font-bold text-grayish-violet lg:flex">
+      <div class="hover:text-very-dark-violet">Login</div> 
+      <%= link_to "Signup", "/", class: "px-8 py-3 font-bold text-white bg-cyan rounded-full hover:opacity-70" %>
+    </div>
+  </div>
+</nav>
