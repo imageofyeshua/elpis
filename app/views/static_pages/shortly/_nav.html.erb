@@ -17,5 +17,23 @@
       <div class="hover:text-very-dark-violet">Login</div> 
       <%= link_to "Signup", "/", class: "px-8 py-3 font-bold text-white bg-cyan rounded-full hover:opacity-70" %>
     </div>
+      <!-- Hamburger Button -->
+      <div data-controller="toggle" class="md:hidden">
+        <button data-toggle-target="button" data-action="click->toggle#toggle" id="menu-btn" type="button" class="z-40 block hamburger md:hidden focus:outline-none">
+          <span class="hamburger-top"></span>
+          <span class="hamburger-middle"></span>
+          <span class="hamburger-bottom"></span>
+        </button> 
+        <!-- Mobile Menu -->
+        <div data-toggle-target="menu" class="absolute hidden p-6 rounded-lg bg-dark-violet left-6 right-6 top-20 z-100">
+          <div class="flex flex-col items-center justify-center w-full space-y-6 font-bold text-white rounded-sm">
+            <%= link_to "Featrues", "/", class: "w-full text-center" %>
+            <%= link_to "Pricing", "/", class: "w-full text-center" %>
+            <%= link_to "Resources", "/", class: "w-full text-center" %>
+            <%= link_to "Login", "/", class: "w-full pt-6 border-t  border-gray-400 text-center" %>
+            <%= link_to "Sign Up", "/", class: "w-full py-3 text-center rounded-full bg-cyan" %>
+          </div>
+        </div>
+      </div>
   </div>
 </nav>
