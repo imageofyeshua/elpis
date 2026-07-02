@@ -30,6 +30,8 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render partial: "layouts/nav" %>
+      <%= yield %>
+    <%= render partial: "layouts/footer" %>
   </body>
 </html>

@@ -4,12 +4,15 @@
     <!-- Flex Container For Logo/Menu -->
     <div class="flex items-center space-x-8">
       <!-- Logo -->
-      <%= image_tag "logo_elpis.svg", class: "h-15" %>
+      <%= link_to root_path do %>
+        <%= image_tag "logo_elpis.svg", class: "h-15" %>
+      <% end %>
       <!-- Left Menu -->
       <div class="hidden space-x-5 font-bold lg:flex">
         <%= link_to "Home", root_path, class: "text-grayish-violet hover:text-very-dark-violet" %>
-        <%= link_to "About", static_pages_about_path, class: "text-grayish-violet hover:text-very-dark-violet" %>
-        <%= link_to "Help", static_pages_help_path, class: "text-grayish-violet hover:text-very-dark-violet" %>
+        <%= link_to "About", about_path, class: "text-grayish-violet hover:text-very-dark-violet" %>
+        <%= link_to "Help", help_path, class: "text-grayish-violet hover:text-very-dark-violet" %>
+        <%= link_to "Contact", contact_path, class: "text-grayish-violet hover:text-very-dark-violet" %>
       </div>
     </div>
     <!-- Right Buttons Menu -->
@@ -26,8 +29,9 @@
         <!-- Mobile Menu -->
         <div data-toggle-target="menu" class="absolute hidden p-6 rounded-lg bg-dark-violet left-6 right-6 top-20 z-100">
           <div class="flex flex-col items-center justify-center w-full space-y-6 font-bold text-white rounded-sm">
-            <%= link_to "Home", "/", class: "w-full text-center" %>
-            <%= link_to "Help", "/", class: "w-full text-center" %>
+            <%= link_to "Home", root_path, class: "w-full text-center" %>
+            <%= link_to "Help", help_path, class: "w-full text-center" %>
+            <%= link_to "Contact", contact_path, class: "w-full text-center" %>
             <%= link_to "Login", "/", class: "w-full pt-6 border-t  border-gray-400 text-center" %>
             <%= link_to "Sign Up", "/", class: "w-full py-3 text-center rounded-full bg-cyan" %>
           </div>
