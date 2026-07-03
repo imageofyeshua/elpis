@@ -30,8 +30,10 @@
   </head>
 
   <body>
-    <%= render partial: "layouts/nav" %>
-      <%= yield %>
-    <%= render partial: "layouts/footer" %>
+    <div class="min-h-screen pb-16">
+      <%= render partial: "layouts/nav" %>
+        <%= yield %>
+      <%= render partial: "layouts/footer" %>
+    </div>
   </body>
 </html>
