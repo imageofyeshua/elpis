@@ -30,10 +30,15 @@
   </head>
 
   <body>
-    <div class="min-h-screen pb-16">
+    <div class="min-h-screen">
       <%= render partial: "layouts/nav" %>
-        <%= yield %>
+      <%= yield %>
+      <div class="fixed bottom-0 left-0 right-0 z-50">
+      <div class="bg-gray-200 text-red-700 max-h-48 overflow-y-auto px-5 py-3 border-b border-gray-700 text-sm opacity-95">
+        <%= debug(params) if Rails.env.development? %>
+      </div>
       <%= render partial: "layouts/footer" %>
+      </div>
     </div>
   </body>
 </html>
