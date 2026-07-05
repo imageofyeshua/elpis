@@ -1,0 +1,18 @@
+<% if @user.present? && @user.errors.any? %>
+  <div id="error_explanation" class="p-4 mb-6 rounded-lg bg-red-50 text-sm text-red-700" role="alert">
+    <div class="flex items-center mb-2">
+      <svg class="w-5 h-5 mr-2 text-red-500 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://w3.org">
+        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+      </svg>
+      <h2 class="font-semibold text-red-800">
+        <%= pluralize(@user.errors.count, "error") %> prohibited this form from being saved:
+      </h2>
+    </div>
+    
+    <ul class="list-disc list-inside space-y-1 pl-1 text-red-600">
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
