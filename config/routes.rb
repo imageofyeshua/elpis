@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get "sessions/new"
-  get "users/new"
-  resources :users
 
   # Micropost Project
   root "static_pages#home"
@@ -12,6 +9,7 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
+  resources :users
 
   # Tailwind CSS Practice Projects
   get "loopstudios", to: "static_pages#loopstudios"
