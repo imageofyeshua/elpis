@@ -69,6 +69,7 @@
           <% if logged_in? %>
             <%= link_to "Profile", current_user, class: "w-full pt-6 border-t  border-gray-400 text-center" %>
             <%= link_to "Settings", root_path, class: "w-full text-center" %>
+            <%= link_to "Log out", logout_path, data: { "turbo-method": :delete }, class: "w-full text-center" %>
           <% else %>
             <%= link_to "Login", login_path, class: "w-full pt-6 border-t  border-gray-400 text-center" %>
             <%= link_to "Sign Up", signup_path, class: "w-full py-3 text-center rounded-full bg-cyan" %>
