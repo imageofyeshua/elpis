@@ -1,5 +1,9 @@
 <% provide(:title, @user.name) %>
-<div class="flex flex-row px-20 gap-3 text-xl">
-  <%= gravatar_for @user %>
-  <%= @user.name %>
+<div class="ml-24">
+  <%= link_to edit_user_path(@user) do %>
+    <div class="flex flex-row gap-3 text-xl">
+      <%= gravatar_for @user %>
+      <span class="hover:text-blue-700"><%= @user.name %></span>
+    </div>
+  <% end %>
 </div>
