@@ -1,8 +1,9 @@
 # Create a main sample user.
 User.create!(name: "Daniel Park",
              email: "daniel@test.com",
-             password: "foobar",
-             password_confirmation: "foobar")
+             password: "asdfasdf",
+             password_confirmation: "asdfasdf",
+             admin: true)
 
 # Generate a bunch of additional users.
 99.times do |n|
