@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
+  include Paginatable
+
   before_action :logged_in_user, only: [:index, :edit, :update]
   before_action :correct_user,   only: [:edit, :update]
 
   def index
-    @users = User.all
+    @pagination, @users = paginate(User.order(name: :asc), per_page: 10)
   end
 
   def show

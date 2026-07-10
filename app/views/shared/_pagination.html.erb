@@ -1,0 +1,79 @@
+<%# app/views/shared/_pagination.html.erb %>
+<% if pagination.total_pages > 1 %>
+  <div class="flex flex-col border-t border-gray-200 bg-white px-4 py-4 mt-6">
+    
+    <div class="flex flex-col space-y-3 sm:hidden w-full">
+      <div class="text-center text-sm text-gray-700">
+        Showing page <span class="font-medium"><%= pagination.current_page %></span> of <span class="font-medium"><%= pagination.total_pages %></span>
+      </div>
+      <div class="flex justify-between w-full">
+        <% if pagination.first_page? %>
+          <span class="relative inline-flex items-center rounded-md border border-gray-300 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-400 cursor-not-allowed">Previous</span>
+        <% else %>
+          <%= link_to "Previous", url_for(page: pagination.current_page - 1), class: "relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50" %>
+        <% end %>
+
+        <% if pagination.last_page? %>
+          <span class="relative inline-flex items-center rounded-md border border-gray-300 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-400 cursor-not-allowed">Next</span>
+        <% else %>
+          <%= link_to "Next", url_for(page: pagination.current_page + 1), class: "relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="hidden sm:flex sm:flex-col sm:items-center sm:space-y-4 w-full">
+      
+      <div class="w-full text-center border-b border-gray-50 pb-2">
+        <p class="text-sm text-gray-600 tracking-wide">
+          Showing page <span class="font-semibold text-indigo-600"><%= pagination.current_page %></span> of <span class="font-semibold text-gray-900"><%= pagination.total_pages %></span> 
+          <span class="text-gray-400 mx-1.5">•</span> 
+          Total of <span class="font-semibold text-gray-900"><%= pagination.total_count %></span> records
+        </p>
+      </div>
+      
+      <div>
+        <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+          
+          <% if pagination.first_page? %>
+            <span class="relative inline-flex items-center rounded-l-md px-3 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 bg-gray-50 cursor-not-allowed">&larr;</span>
+          <% else %>
+            <%= link_to url_for(page: pagination.current_page - 1), class: "relative inline-flex items-center rounded-l-md px-3 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20" do %>
+              &larr;
+            <% end %>
+          <% end %>
+
+          <% 
+            max_links = 10
+            start_page = [pagination.current_page - (max_links / 2), 1].max
+            end_page = start_page + max_links - 1
+            
+            if end_page > pagination.total_pages
+              end_page = pagination.total_pages
+              start_page = [end_page - max_links + 1, 1].max
+            end
+          %>
+
+          <% (start_page..end_page).each do |page_num| %>
+            <% if page_num == pagination.current_page %>
+              <span aria-current="page" class="relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20">
+                <%= page_num %>
+              </span>
+            <% else %>
+              <%= link_to page_num, url_for(page: page_num), class: "relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20" %>
+            <% end %>
+          <% end %>
+
+          <% if pagination.last_page? %>
+            <span class="relative inline-flex items-center rounded-r-md px-3 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 bg-gray-50 cursor-not-allowed">&rarr;</span>
+          <% else %>
+            <%= link_to url_for(page: pagination.current_page + 1), class: "relative inline-flex items-center rounded-r-md px-3 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20" do %>
+              &rarr;
+            <% end %>
+          <% end %>
+          
+        </nav>
+      </div>
+    </div>
+
+  </div>
+<% end %>
