@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "password_resets/new"
+  get "password_resets/edit"
 
   # Micropost Project
   root "static_pages#home"
