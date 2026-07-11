@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   resources :users
+  resources :account_activations, only: [:edit]
 
   # Tailwind CSS Practice Projects
   get "loopstudios", to: "static_pages#loopstudios"
