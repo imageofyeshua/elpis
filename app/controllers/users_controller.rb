@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @pagination, @microposts = paginate(@user.microposts.order(created_at: :desc), per_page: 10)
   end
 
   def new

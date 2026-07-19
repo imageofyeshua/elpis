@@ -6,4 +6,14 @@
       <span class="hover:text-blue-700"><%= @user.name %></span>
     </div>
   <% end %>
+  <div class="mx-auto">
+    <%= render partial: "shared/pagination", locals: { pagination: @pagination } %>
+    <% if @user.microposts.any? %> 
+      <div class="my-3 text-xl"><%= pluralize(@user.microposts.count, "micropost") %></div>
+      <ol class="microposts">
+        <%= render @microposts %> 
+      </ol>
+    <% end %>
+    <%= render partial: "shared/pagination", locals: { pagination: @pagination } %>
+  </div>
 </div>
