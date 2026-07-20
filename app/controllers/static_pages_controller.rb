@@ -1,6 +1,12 @@
 class StaticPagesController < ApplicationController
+  include Paginatable
+
   def home
-    @micropost = current_user.microposts.build if logged_in?
+    if logged_in?
+      @micropost = current_user.microposts.build
+      @feed_items = current_user.feed
+      @pagination, @feed_items = paginate(current_user.feed.order(created_at: :desc), per_page: 10)
+    end
   end
 
   def help

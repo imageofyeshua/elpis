@@ -1,0 +1,6 @@
+<% if @feed_items.any? %>
+  <ol class="text-blue-900">
+    <%= render @feed_items %>
+  </ol>
+  <%= render partial: "shared/pagination", locals: { pagination: @pagination } %>
+<% end %>
