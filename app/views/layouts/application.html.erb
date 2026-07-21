@@ -31,18 +31,20 @@
 
   <body>
     <div class="min-h-screen flex flex-col pb-48">
-      <%= render partial: "layouts/nav" %>
+      <%= render "layouts/nav" %>
       <div class="fixed top-4 right-4 z-50 max-w-md w-full">
         <%= render "shared/flash" %>
       </div>
       <div class="grow p-6">
         <%= yield %>
+        <!-- Global Turbo Confirm Modal -->
+        <%= render "shared/turbo_confirm_modal" %>
       </div>
       <div class="fixed bottom-0 left-0 right-0 z-50">
       <div class="bg-gray-200 text-red-700 max-h-48 overflow-y-auto px-5 py-3 border-b border-gray-700 text-sm opacity-95">
         <%= debug(params) if Rails.env.development? %>
       </div>
-      <%= render partial: "layouts/footer" %>
+      <%= render "layouts/footer" %>
       </div>
     </div>
   </body>
