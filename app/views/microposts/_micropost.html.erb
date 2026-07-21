@@ -1,8 +1,12 @@
-<li id="micropost-<%= micropost.id %>">
-  <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
-  <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
-  <span class="content"><%= micropost.content %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
-  </span>
-</li>
+<div id="micropost-<%= micropost.id %>" class="flex">
+  <div class="w-30 pt-3">
+    <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
+  </div>
+  <div class="w-120 my-1 border-t border-gray-200 py-1">
+    <div class="text-sm text-slate-600"><%= link_to micropost.user.name, micropost.user %></div>
+    <div class="text-slate-900"><%= micropost.content.truncate(24) %></div>
+    <div class="text-sm text-slate-500">
+      [Posted <%= time_ago_in_words(micropost.created_at) %> ago.]
+    </div>
+  </div>
+</div>
