@@ -1,4 +1,4 @@
-<% if @feed_items.any? %>
+<% if @feed_items&.any? %>
   <%= render partial: "shared/pagination", locals: { pagination: @pagination } %>
   <ol class="text-blue-900">
     <%= render @feed_items %>
