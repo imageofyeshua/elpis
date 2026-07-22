@@ -21,4 +21,19 @@ class MicropostsInterfaceTest < MicropostsInterface
     end
     assert_select 'div#error_explanation'
   end
+
+  test "should create a micropost on valid submission" do
+    content = "This micropost really ties the room together"
+    assert_difference 'Micropost.count', 1 do
+      post microposts_path, params: { micropost: { content: content } }
+    end
+    assert_redirected_to root_url
+    follow_redirect!
+  end
+
+  test "should not have delete links on other user's profile page" do
+    get user_path(users(:archer))
+    assert_select 'a', { text: 'delete', count: 0 }
+  end
+
 end
