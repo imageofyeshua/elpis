@@ -11,7 +11,7 @@
   </div>
   <div class="px-3 py-8 text-sm font-medium text-red-800 hover:text-red-600">
       <% if current_user?(micropost.user) %>
-        <%= link_to "delete", micropost, data: { "turbo-method": :delete, turbo_confirm: "This action cannot be undone. Are you sure?" } %>
+        <%= link_to "delete", micropost, data: { "turbo-method": :delete, turbo_confirm: "This action cannot be undone." } %>
       <% end %>
   </div>
 </div>
