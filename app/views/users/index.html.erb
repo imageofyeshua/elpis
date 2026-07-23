@@ -2,12 +2,12 @@
 
 <div class="flex flex-col items-center">
   <h1>All users</h1>
-  <%= render partial: "shared/pagination", locals: { pagination: @pagination } %>
+  <%= render partial: "shared/pagination", paginator: @paginator %>
   <ul role="list" class="divide-y divide-gray-100">
     <% @users.each do |user| %>
       <%= render user %>
     <% end %>
   </ul>
-  <%= render partial: "shared/pagination", locals: { pagination: @pagination } %>
+  <%= render partial: "shared/pagination", paginator: @paginator %>
 </div>
 

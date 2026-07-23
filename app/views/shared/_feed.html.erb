@@ -1,7 +1,7 @@
 <% if @feed_items&.any? %>
-  <%= render partial: "shared/pagination", locals: { pagination: @pagination } %>
+  <%= render partial: "shared/pagination", paginator: @paginator %>
   <ol class="text-blue-900">
     <%= render @feed_items %>
   </ol>
-  <%= render partial: "shared/pagination", locals: { pagination: @pagination } %>
+  <%= render partial: "shared/pagination", paginator: @paginator %>
 <% end %>

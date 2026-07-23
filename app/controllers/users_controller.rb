@@ -1,17 +1,25 @@
 class UsersController < ApplicationController
-  include Paginatable
-
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
 
   def index
-    @pagination, @users = paginate(User.order(name: :asc), per_page: 10)
+    @paginator = Paginator.new(
+      User.order(name: :asc),
+      page: params[:page],
+      per_page: 10
+    )
+    @users = @paginator.records
   end
 
   def show
     @user = User.find(params[:id])
-    @pagination, @microposts = paginate(@user.microposts.order(created_at: :desc), per_page: 10)
+    @paginator = Paginator.new(
+      @user.microposts.order(created_at: :desc),
+      page: params[:page],
+      per_page: 10
+    )
+    @microposts = @paginator.records
   end
 
   def new
