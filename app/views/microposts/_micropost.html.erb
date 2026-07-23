@@ -5,6 +5,9 @@
   <div class="w-60 my-1 border-t border-gray-200 py-1">
     <div class="text-sm text-slate-600"><%= link_to micropost.user.name, micropost.user %></div>
     <div class="text-slate-900"><%= micropost.content.truncate(24) %></div>
+    <div class="my-2">
+      <%= image_tag micropost.image if micropost.image.attached? %> 
+    </div>
     <div class="text-sm text-slate-500">
       [Posted <%= time_ago_in_words(micropost.created_at) %> ago.]
     </div>
