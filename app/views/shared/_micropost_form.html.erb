@@ -4,4 +4,37 @@
     <%= f.text_area :content, rows: 3, placeholder: "Compose new micropost...", class: "w-4/5 rounded-md border border-slate-300 px-3 py-2" %>
     <%= f.submit "Post", class: "w-4/5 mt-3 px-4 py-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white" %>
   </div>
+
+  <%# Connect the wrapper block to your Stimulus controller %>
+  <div class="mb-4" data-controller="file-input">
+    <%= f.label :image, "Upload Image", class: "block text-sm font-medium text-gray-700 my-2" %>
+
+    <div class="flex items-center space-x-4">
+      <%# Custom Clickable Button Label %>
+      <label 
+         for="micropost_image" 
+         class="cursor-pointer inline-flex items-center px-2 py-1 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out">
+
+        <svg class="w-5 h-5 mr-2 -ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+        </svg>
+        Choose File
+      </label>
+
+      <%# Hidden Native File Input with Direct Upload enabled %>
+      <%= f.file_field :image, 
+      id: "micropost_image", 
+      class: "sr-only", 
+      direct_upload: true,
+      data: { 
+        file_input_target: "input", 
+        action: "change->file-input#display" 
+      } %>
+
+    <%# Text indicator for selected filename %>
+    <span data-file-input-target="name" class="text-sm text-gray-500 italic">
+      No file chosen
+    </span>
+    </div>
+  </div>
 <% end %>
