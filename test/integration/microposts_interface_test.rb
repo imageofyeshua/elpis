@@ -1,11 +1,11 @@
 require "test_helper"
 
 class MicropostsInterface < ActionDispatch::IntegrationTest
-  include Paginatable
 
   def setup
     @user = users(:michael)
     log_in_as(@user)
+    @scope = @user.microposts.order(created_at: :desc)
   end
 end
 
@@ -13,7 +13,7 @@ class MicropostsInterfaceTest < MicropostsInterface
 
   test "should paginate microposts" do
     get root_path
-    assert_select 'div#pagination'
+    assert_select 'nav#pagination'
   end
 
   test "should show errors but not create micropost on invalid submission" do
@@ -34,9 +34,10 @@ class MicropostsInterfaceTest < MicropostsInterface
   end
 
   test "should be able to delete own micropost" do
-    @pagination, @micropost = paginate(@user.microposts, per_page: 10)
+    paginator = Paginator.new(@scope, page: 1, per_page: 10)
+
     assert_difference 'Micropost.count', -1 do
-      delete micropost_path(@micropost.first)
+      delete micropost_path(paginator.records.first)
     end
   end
 
@@ -46,6 +47,5 @@ class MicropostsInterfaceTest < MicropostsInterface
       post microposts_path, params: { micropost: { content: content } }
     end
     assert_redirected_to root_url
-    follow_redirect!
   end
 end

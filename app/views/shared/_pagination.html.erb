@@ -2,7 +2,7 @@
 <% paginator ||= local_assigns[:paginator] || @paginator %>
 
 <% if paginator.present? && paginator.total_pages > 1 %>
-  <nav aria-label="Pagination" class="flex items-center justify-between border-t border-slate-200 bg-white px-4 py-3 sm:px-6">
+  <nav id="pagination" aria-label="Pagination" class="flex items-center justify-between border-t border-slate-200 bg-white px-4 py-3 sm:px-6">
 
     <%# Mobile Navigation: Simple Prev/Next %>
     <div class="flex flex-1 justify-between sm:hidden">
