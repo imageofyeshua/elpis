@@ -2,10 +2,10 @@
 class Paginator
   attr_reader :relation, :current_page, :per_page
 
-  def initialize(relation, page: 1, per_page: 20)
+  def initialize(relation, page: 1, per_page: 10)
     @relation = relation
     @current_page = [page.to_i, 1].max
-    @per_page = per_page.to_i.positive? ? per_page.to_i : 20
+    @per_page = per_page.to_i.positive? ? per_page.to_i : 10
   end
 
   # Returns the paginated records array/relation
