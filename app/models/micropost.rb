@@ -11,8 +11,8 @@ class Micropost < ApplicationRecord
   def image_type_and_size
     return unless image.attached?
 
-    if image.blob.byte_size > 1.megabytes
-      errors.add(:image, "should be less than 1MB")
+    if image.blob.byte_size > 2.megabytes
+      errors.add(:image, "should be less than 2MB")
     end
 
     acceptable_types = ["image/jpeg", "image/gif", "image/png", "image/webp"]
