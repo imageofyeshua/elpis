@@ -5,7 +5,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
   imageUpload.addEventListener("change", function() {
     const file = this.files[0];
-    if (!file) return;
+    if (!file || !file.type.startsWith("image/")) return;
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = function (e) {
+      const img = new Image();
+      img.src = e.target.result;
+
+      img.onload = function () {
+        const targetWidth = 500;
+        
+        // Maintain original aspect ratio: scale height based on width change
+        const scaleFactor = targetWidth / img.width;
+        const targetHeight = img.height * scaleFactor;
+
+        // Create canvas with 500px width and proportional height
+        const canvas = document.createElement("canvas");
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
+
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
+
+        // Convert canvas back to a File object and update the file input
+        canvas.toBlob(function (blob) {
+          const resizedFile = new File([blob], file.name, {
+            type: file.type,
+            lastModified: Date.now()
+          });
+
+          const dataTransfer = new DataTransfer();
+          dataTransfer.items.add(resizedFile);
+          imageUpload.files = dataTransfer.files;
+        }, file.type);
+      };
+    };
 
     const size_in_megabytes = file.size/1024/1024;
     if (size_in_megabytes > 2) {
@@ -19,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function showAlertModel(title, message) {
-const modal = document.createElement("div");
+  const modal = document.createElement("div");
   modal.className =
     "fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/50 backdrop-blur-sm transition-opacity duration-200 animate-fade-in";
 
