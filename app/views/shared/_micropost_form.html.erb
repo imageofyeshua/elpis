@@ -29,7 +29,9 @@
       data: { 
         file_input_target: "input", 
         action: "change->file-input#display" 
-      } %>
+      },
+      accept: "image/jpeg,image/gif,image/png,image/webp"
+      %>
 
     <%# Text indicator for selected filename %>
     <span data-file-input-target="name" class="text-sm text-gray-500 italic">
