@@ -7,13 +7,14 @@
     </div>
   <% end %>
   <div class="mx-auto">
-    <%= render partial: "shared/pagination", paginator: @paginator %>
+    <%= render "shared/pagination", paginator: @paginator %>
+    <%= render "follow_form" if logged_in? %>
     <% if @user.microposts.any? %> 
       <div class="my-3 text-xl"><%= pluralize(@user.microposts.count, "micropost") %></div>
       <ol class="microposts">
         <%= render @microposts %> 
       </ol>
     <% end %>
-    <%= render partial: "shared/pagination", paginator: @paginator %>
+    <%= render "shared/pagination", paginator: @paginator %>
   </div>
 </div>

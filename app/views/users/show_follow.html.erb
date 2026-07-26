@@ -1,0 +1,26 @@
+<% provide(:title, @title) %>
+<div class="mx-24 flex flex-row gap-4">
+  <div class="basis-1/2 p-4">
+    <%= gravatar_for @user %>
+    <div><%= @user.name %></div>
+    <span><%= link_to "view my profile", @user %></span>
+    <span><strong>Microposts:</strong> <%= @user.microposts.count %></span>
+    <%= render 'shared/stats' %>
+    <% if @users.any? %>
+      <div class="mt-5">
+        <% @users.each do |user| %>
+          <%= link_to gravatar_for(user, size: 30), user %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="basis-1/2 items-center">
+    <h3><%= @title %></h3>
+    <% if @users.any? %>
+      <ul class="space-x-0">
+        <%= render @users %>
+      </ul>
+      <%= render "shared/pagination", paginator: @paginator %>
+    <% end %>
+  </div>
+</div>
